@@ -1,0 +1,6 @@
+# Ignorar arquivos e pastas criados pelo Visual Studio
+.vs/
+
+# Ignorar pastas de build
+obj/
+bin/
