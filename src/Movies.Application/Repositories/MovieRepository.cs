@@ -1,3 +1,5 @@
+using Movies.Application.Models;
+
 namespace Movies.Application.Repositories;
 
 public class MovieRepository : IMovieRepository
