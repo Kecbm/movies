@@ -1,4 +1,7 @@
-namespace Movies.Application.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Movies.Application.Repositories;
+
+namespace Movies.Application;
 
 // dotnet add package Microsoft.Extensions.DependencyInjection.Abstractions
 
