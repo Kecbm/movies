@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Movies.Contracts.Requests;
 using Movies.Application.Repositories;
+using Movies.Application.Models;
 
 namespace Movies.Api.Controllers;
 
@@ -15,10 +16,18 @@ public class MoviesController : ControllerBase
         _movieRepository = movieRepository;
     }
 
-    // Tornar os campos da request obrigatórios
     [HttpPost("movies")]
-    public async Task<IActionResult> Create([FromBody] CreateMovieRequest request)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateMovieRequest request)
     {
-        return Ok(request);
+        var movie = new Movie {
+            Id = Guid.NewGuid(),
+            Title = request.Title,
+            YearOfRelease = request.YearOfRelease,
+            Genres = request.Genres.ToList()
+        };
+
+        await _movieRepository.CreateAsync(movie);
+        // The path: Headers.Location
+        return Created($"api/movies/{movie.Id}", movie);
     }
 }
