@@ -22,8 +22,12 @@ public class MoviesController : ControllerBase
         var movie = request.MapToMovie();
 
         await _movieRepository.CreateAsync(movie);
+
         // The path: Headers.Location
-        return Created($"/{ApiEndpoints.Movies.Create}/{movie.Id}", movie);
+        // return Created($"/{ApiEndpoints.Movies.Create}/{movie.Id}", movie);
+
+        // Headers.Location is the path to the new resource
+        return CreatedAtAction(nameof(GetAsync), new { id = movie.Id }, movie);
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
