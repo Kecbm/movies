@@ -15,4 +15,14 @@ public static class ContractMapping
             Genres = request.Genres.ToList()
         };
     }
+
+    public static MovieResponse MapToResponse(this Movie movie)
+    {
+        return new MovieResponse {
+            Id = movie.Id,
+            Title = movie.Title,
+            YearOfRelease = movie.YearOfRelease,
+            Genres = movie.Genres
+        };
+    }
 }
