@@ -1,3 +1,3 @@
-# API developed in the From Zero to Hero: REST APIs in .NET course of @Elfocrash
+# API developed in the From Zero to Hero: REST APIs in .NET course of Nick Chapsas
 
-**Stoped**: Implementinh movie creation - 2 min
+**Stoped**: Introducing mapping
