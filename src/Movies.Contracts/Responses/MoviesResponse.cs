@@ -1,6 +1,6 @@
-namespace Movies.Contracts.Response;
+namespace Movies.Contracts.Responses;
 
-public class MovieResponse
+public class MoviesResponse
 {
     public IEnumerable<MovieResponse> Items { get; init; } = Enumerable.Empty<MovieResponse>();
 }
