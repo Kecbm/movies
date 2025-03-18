@@ -36,7 +36,16 @@ public class MoviesController : ControllerBase
             return NotFound();
         }
 
-        var response = movie.MapToResponse();
+        var response = movie.MapToResponseMovie();
+
+        return Ok(response);
+    }
+
+    [HttpGet(ApiEndpoints.Movies.GetAll)]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var movies = await _movieRepository.GetAllAsync();
+        var response = movies.MapToResponseMovies();
 
         return Ok(response);
     }
