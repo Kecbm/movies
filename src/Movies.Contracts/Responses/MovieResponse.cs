@@ -1,4 +1,4 @@
-namespace Movies.Contracts.Requests;
+namespace Movies.Contracts.Responses;
 
 public class MovieResponse
 {
