@@ -27,7 +27,7 @@ public class MoviesController : ControllerBase
         // return Created($"/{ApiEndpoints.Movies.Create}/{movie.Id}", movie);
 
         // Headers.Location is the path to the new resource
-        return CreatedAtAction(nameof(GetAsync), new { id = movie.Id }, movie);
+        return CreatedAtAction(nameof(GetAsync), new { idOrSlug = movie.Id }, movie);
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
