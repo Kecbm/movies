@@ -33,4 +33,14 @@ public static class ContractMapping
             Items = movies.Select(movie => movie.MapToResponseMovie())
         };
     }
+
+    public static Movie MapToUpdateMovie(this UpdateMovieRequest request, Guid id)
+    {
+        return new Movie {
+            Id = id,
+            Title = request.Title,
+            YearOfRelease = request.YearOfRelease,
+            Genres = request.Genres.ToList()
+        };
+    }
 }
