@@ -31,6 +31,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
+    [ActionName(nameof(GetAsync))]
     public async Task<IActionResult> GetAsync(Guid id)
     {
         var movie = await _movieRepository.GetByIdAsync(id);
