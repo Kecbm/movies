@@ -50,7 +50,25 @@ public class MoviesController : ControllerBase
     public async Task<IActionResult> GetAllAsync()
     {
         var movies = await _movieRepository.GetAllAsync();
+
         var response = movies.MapToResponseMovies();
+
+        return Ok(response);
+    }
+
+    [HttpPut(ApiEndpoints.Movies.Update)]
+    public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] UpdateMovieRequest request)
+    {
+        var movie = request.MapToUpdateMovie(id);
+
+        var updated = await _movieRepository.UpdateAsync(movie);
+
+        if (updated == null)
+        {
+            return NotFound();
+        }
+
+        var response = movie.MapToResponseMovie();
 
         return Ok(response);
     }
