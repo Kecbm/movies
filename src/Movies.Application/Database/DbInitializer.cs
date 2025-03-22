@@ -25,7 +25,7 @@ public class DbInitializer
         ");
 
         await connection.ExecuteAsync(@"
-            create unique index currently if not exists movies_slug_idx on movies
+            create unique index if not exists movies_slug_idx on movies
             using btree (slug);
         ");
     }
