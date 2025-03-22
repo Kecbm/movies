@@ -2,7 +2,7 @@ using Dapper;
 
 namespace Movies.Application.Database;
 
-public interface IDbInitializer
+public class DbInitializer
 {
     private readonly IDbConnectionFactory _dbConnectionFactory;
 
@@ -15,18 +15,18 @@ public interface IDbInitializer
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
 
-        await connection.ExecuteAsync("""
+        await connection.ExecuteAsync(@"
             create table if not exists movies (
                 id UUID primary key,
                 slug TEXT not null,
                 title TEXT not null,
                 yearofrelease integer not null
             );
-        """);
+        ");
 
-        await connection.ExecuteAsync("""
+        await connection.ExecuteAsync(@"
             create unique index currently if not exists movies_slug_idx on movies
             using btree (slug);
-        """);
+        ");
     }
 }
