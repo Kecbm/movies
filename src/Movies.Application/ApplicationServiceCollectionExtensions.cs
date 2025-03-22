@@ -1,5 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Movies.Application.Repositories;
+using Movies.Application.Database;
+using Npgsql;
 
 namespace Movies.Application;
 
